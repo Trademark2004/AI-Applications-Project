@@ -11,6 +11,8 @@
 
 **Visual**: Title slide with New Orleans skyline and Airbnb logo
 
+**Optional Supporting Visual**: Notebook Cell 29 (price distribution preview) or Cell 19 (market overview statistics)
+
 ### Speaking Script:
 "Good morning/afternoon. Today I'll present our machine learning solution for Airbnb price prediction in the New Orleans market. We developed a Random Forest model that achieved 85%+ accuracy in predicting nightly rental prices, delivering actionable insights for hosts, guests, and the platform itself. This 10-minute presentation will cover our methodology, model performance, and business recommendations."
 
@@ -19,6 +21,10 @@
 ## Slide 2: Business Problem & Objectives (1 minute)
 
 **Visual**: Problem statement with key statistics
+
+**Supporting Data Visuals**:
+- Notebook Cell 29: Price distribution showing high variability ($15-$1,700 range)
+- Notebook Cell 19: Market size and property type breakdown
 
 ### Key Points:
 - **Business Challenge**: Airbnb hosts struggle with optimal pricing decisions
@@ -37,13 +43,18 @@
 ### Speaking Script:
 "The Airbnb market in New Orleans faces a critical pricing challenge. With over 7,400 listings and prices ranging from $15 to $50,000 per night, hosts lack reliable pricing guidance. Our analysis found hosts are frequently mispricing properties by $50-100 per night, resulting in either lost revenue or reduced bookings. Our objective was to develop a machine learning model that accurately predicts optimal pricing and identifies the factors that matter most."
 
-**Reference**: See Appendix Figure 1 (Price Distribution)
+**Visual Reference**: Notebook Cell 29 (Price Distribution histogram showing right-skewed distribution, median $110, mean $169.78)
 
 ---
 
 ## Slide 3: Data & Methodology (1.5 minutes)
 
 **Visual**: Data pipeline flowchart with dataset statistics
+
+**Supporting Process Visuals**:
+- Notebook Cells 3-6: Raw dataset shapes and initial inspection
+- Notebook Cell 13: Imputation methodology with skewness checking
+- Notebook Cells 21-23: Correlation matrices showing feature relationships
 
 ### Data Sources:
 - **Listings Dataset**: 7,444 records, 75+ features
@@ -69,13 +80,20 @@
 ### Speaking Script:
 "We leveraged three comprehensive datasets from Inside Airbnb, totaling 7,444 listings, 2.7 million availability records, and nearly half a million reviews. Our preprocessing addressed critical issues including entirely null calendar prices - which we documented as a data limitation rather than imputing incorrectly. We implemented distribution-aware imputation strategies, checking skewness before deciding on median versus mean imputation. Importantly, we avoided data leakage by excluding any price-derived features. We tested four machine learning algorithms and selected 21 features spanning property characteristics, host reputation, and guest reviews."
 
-**Reference**: See Appendix Figures 2-3 (Data Overview)
+**Visual References**: 
+- Notebook Cells 3-10: Dataset shapes, missing value patterns
+- Notebook Cell 13: Distribution-aware imputation strategy with skewness analysis
+- Notebook Cell 19: Comprehensive data exploration with statistics
 
 ---
 
 ## Slide 4: Model Performance Results (1.5 minutes)
 
 **Visual**: Model comparison chart + performance metrics table
+
+**Primary Visuals**:
+- Notebook Cell 43: Three-panel model comparison (R², RMSE, MAE bar charts)
+- Notebook Cell 45: Prediction vs Actual scatter plots showing model accuracy
 
 ### Model Comparison:
 | Model | Test RMSE | Test MAE | Test R² |
@@ -100,13 +118,17 @@
 ### Speaking Script:
 "Our XGBoost model outperformed all alternatives, achieving an R-squared of 0.5842, meaning it explains 58.4% of the price variance in the market. The model's average prediction error is $97 per night, with 67.9% of predictions falling within $50 of actual prices and 85.6% within $100. This level of accuracy provides reliable pricing guidance for real-world application. XGBoost improved R-squared by 27% over our linear regression baseline. Through systematic hyperparameter tuning with grid search, we also optimized Random Forest, achieving RMSE of $97.71. The similar performance on training and test sets confirms strong generalization."
 
-**Reference**: See Appendix Figures 8-9 (Model Comparison, Prediction vs Actual)
+**Visual References**: 
+- Notebook Cell 43: Model comparison bar charts (R², RMSE, MAE for all 4 models)
+- Notebook Cell 45: Prediction vs Actual scatter plots (training and test sets)
 
 ---
 
 ## Slide 5: Feature Importance & Key Drivers (1.5 minutes)
 
 **Visual**: Horizontal bar chart of top 15 features with importance scores
+
+**Primary Visual**: Notebook Cell 46 (Feature Importance chart clearly showing bathrooms at 44.5%)
 
 ### Top 5 Price Drivers:
 1. **bathrooms** (44.5% importance) - Property quality and capacity indicator
@@ -135,13 +157,17 @@
 ### Speaking Script:
 "Feature importance analysis reveals what truly drives Airbnb prices in New Orleans. The top five factors account for 67% of pricing decisions. Bathrooms alone represent 44.5% - nearly half of the pricing decision. This makes sense: bathrooms are a strong proxy for property quality and guest capacity. Year-round availability comes in second at 7.3%, showing that professional hosts who maintain consistent availability command premium pricing. Host scale matters too - total listing count contributes 5.8% importance. Interestingly, traditional metrics like accommodates and reviews_per_month have lower but meaningful impact. This tells hosts that property quality upgrades - especially bathrooms - have the highest ROI, followed by maintaining year-round availability and scaling operations."
 
-**Reference**: See Appendix Figure 10 (Feature Importance)
+**Visual Reference**: Notebook Cell 46 (Horizontal bar chart showing Top 15 Feature Importances with bathrooms dominating at 44.5%)
 
 ---
 
 ## Slide 6: Model Validation & Diagnostics (1 minute)
 
 **Visual**: 2x2 grid showing prediction vs actual plots and residual analysis
+
+**Primary Visuals**:
+- Notebook Cell 45: Prediction vs Actual (2 plots: training and test)
+- Notebook Cell 48: Residual Analysis (2 plots: scatter and distribution histogram)
 
 ### Validation Results:
 1. **Prediction Accuracy**:
@@ -163,13 +189,20 @@
 ### Speaking Script:
 "Model validation confirms our predictions are reliable. The prediction versus actual plots show strong linear correlation with points clustered near the perfect prediction line. Residual analysis reveals random scatter around zero with normal distribution - exactly what we want to see. The mean residual is effectively zero, confirming unbiased predictions. Most importantly, similar performance on training and test sets demonstrates the model generalizes well to new listings."
 
-**Reference**: See Appendix Figures 11-12 (Residual Plots)
+**Visual References**: 
+- Notebook Cell 45: Prediction vs Actual plots (train and test sets with perfect prediction line)
+- Notebook Cell 48: Residual analysis (scatter plot and histogram showing normal distribution around zero)
 
 ---
 
 ## Slide 7: Business Value & ROI Analysis (1.5 minutes)
 
 **Visual**: ROI calculation infographic with financial projections
+
+**Supporting Data**:
+- Notebook Cell 29: Price statistics (mean $169.78, median $110) for baseline
+- Notebook Cell 47: Prediction accuracy bands (visual for confidence in projections)
+- Notebook Cell 50: Stakeholder value propositions
 
 ### Revenue Optimization Potential:
 - **Current Situation**: Average price $169.78/night (median $110)
@@ -206,13 +239,19 @@
 ### Speaking Script:
 "Let's quantify the business value. Our model's prediction accuracy creates concrete revenue opportunities. For an individual host at 50% occupancy, optimizing pricing by just $26.50 per night - a conservative 50% of our median error - generates nearly $5,000 in additional annual revenue. That's a 15.6% increase for a median-priced listing. Scaled across New Orleans' 7,370 active listings, we're talking about $35.7 million in annual market optimization. Airbnb's 15% transaction fee means $5.4 million in additional platform revenue. Beyond direct revenue, hosts gain pricing confidence, guests benefit from fair market rates, and Airbnb strengthens its marketplace. This is a win-win-win scenario with measurable impact."
 
-**Reference**: See Appendix Figure 13 (ROI Analysis)
+**Visual References**: 
+- Notebook Cell 47: Prediction accuracy analysis (44.2% within $20, 67.9% within $50, 85.6% within $100)
+- Notebook Cell 50: Stakeholder recommendations with ROI calculations and business insights
 
 ---
 
 ## Slide 8: Stakeholder Recommendations (1.5 minutes)
 
 **Visual**: Three-column layout with recommendations for each stakeholder group
+
+**Supporting Visuals**: 
+- Notebook Cell 46: Feature importance (guides optimization priorities)
+- Notebook Cell 50: Detailed stakeholder recommendations with quantified impacts
 
 ### For Airbnb Platform:
 **Strategic Initiatives**:
@@ -270,6 +309,10 @@
 ## Slide 9: Limitations & Future Work (45 seconds)
 
 **Visual**: Two-column layout: Limitations | Future Enhancements
+
+**Supporting Context**: 
+- Notebook Cell 13: Distribution-aware imputation methodology
+- Notebook Cell 37: Feature selection process (21 features chosen)
 
 ### Current Limitations:
 1. **Data Constraints**:
@@ -345,44 +388,82 @@
 
 ---
 
-## Appendix: Reference Figures
+## Appendix: Notebook Cell Reference Guide
 
-### Figure 1: Price Distribution Analysis (Notebook Cell 29)
-- Histogram showing right-skewed price distribution
-- Median: $111, Mean: $423
-- Clear market segments from budget to luxury
+### Key Visualizations by Presentation Slide:
 
-### Figure 2: Data Overview Statistics (Notebook Cells 3-10)
-- Dataset shapes and completeness metrics
-- Missing value patterns before/after handling
+**Slide 2 - Problem & Objectives:**
+- Cell 29: Price Distribution histogram (right-skewed, median $110, mean $169.78)
+- Cell 19: Market overview statistics and property type breakdown
 
-### Figure 3: Missing Value Treatment (Notebook Cell 13)
-- Distribution skewness analysis
-- Imputation strategy decisions
+**Slide 3 - Data & Methodology:**
+- Cells 3-10: Dataset loading and initial exploration
+- Cell 13: Distribution-aware imputation with skewness analysis
+- Cell 19: Comprehensive data profiling and missing value treatment
+- Cells 21-28: Correlation analysis and feature relationships
 
-### Figure 8: Model Comparison Chart (Notebook Cell 43)
-- Bar charts comparing RMSE, MAE, R² across 4 models
-- Performance metrics table
+**Slide 4 - Model Performance:**
+- Cell 43: Model comparison bar charts (R², RMSE, MAE for 4 algorithms)
+- Cells 39-42: Individual model training outputs with metrics
+- Cell 44: Hyperparameter tuning with GridSearchCV results
 
-### Figure 9: Prediction vs Actual (Notebook Cell 45)
-- Scatter plots for training and test sets
-- Perfect prediction reference line
+**Slide 5 - Feature Importance:**
+- Cell 46: Top 15 Feature Importance horizontal bar chart
+- Cell 37: Feature selection process (21 features from property/host/review dimensions)
 
-### Figure 10: Feature Importance (Notebook Cell 46)
-- Horizontal bar chart of top 15 features
-- Importance scores and rankings
+**Slide 6 - Model Validation:**
+- Cell 45: Prediction vs Actual scatter plots (train/test with perfect prediction line)
+- Cell 48: Residual analysis (scatter and histogram showing unbiased predictions)
+- Cell 47: Prediction accuracy bands (67.9% within $50, 85.6% within $100)
 
-### Figure 11-12: Residual Analysis (Notebook Cell 48)
-- Residuals vs predicted plots
-- Residual distribution histograms
+**Slide 7 - Business Value:**
+- Cell 47: Prediction accuracy thresholds visualization
+- Cell 50: Stakeholder recommendations with ROI calculations
+- Cell 29: Price statistics for baseline calculations
 
-### Figure 13: ROI Calculations (Notebook Cell 50)
-- Revenue optimization breakdown
-- Annual impact projections
+**Slide 8 - Recommendations:**
+- Cell 50: Detailed stakeholder-specific recommendations
+- Cell 46: Feature importance (guides optimization priorities)
+
+### Additional Supporting Visualizations:
+- Cells 21-28: Correlation matrices (listings, calendar variables)
+- Cell 20: Categorical variable analysis
+- Cell 32-33: Geographic and neighborhood patterns
 
 ---
 
 ## Technical Appendix
+
+### Complete Notebook Structure:
+
+**Part 1: Data Loading & Exploration (Cells 1-10)**
+- Cell 2: Import libraries and load datasets
+- Cells 3-10: Dataset inspection and shape verification
+
+**Part 2: Data Cleaning & Preprocessing (Cells 11-20)**
+- Cell 13: Distribution-aware imputation strategy
+- Cells 15-17: [Removed] Calendar price imputation (100% null data)
+- Cell 19: Comprehensive data profiling
+- Cell 20: Categorical variable analysis
+
+**Part 3: Exploratory Data Analysis (Cells 21-33)**
+- Cells 21-23: Correlation matrices (listings, calendar, price-focused)
+- Cells 24-28: Temporal and neighborhood analysis
+- Cell 29: Price distribution visualization (KEY VISUAL)
+- Cells 30-33: Geographic patterns and insights
+
+**Part 4: Machine Learning Pipeline (Cells 36-50)**
+- Cell 36: ML library imports
+- Cell 37: Feature selection (21 features identified)
+- Cell 38: Train/test split (80/20, 5,896/1,474 samples)
+- Cells 39-42: Train 4 models (Linear, RF, GB, XGBoost)
+- Cell 43: Model comparison visualizations (KEY VISUAL)
+- Cell 44: Hyperparameter tuning with GridSearchCV
+- Cell 45: Prediction vs Actual plots (KEY VISUAL)
+- Cell 46: Feature importance analysis (KEY VISUAL)
+- Cell 47: Prediction accuracy bands
+- Cell 48: Residual analysis (KEY VISUAL)
+- Cell 50: Stakeholder recommendations (KEY INSIGHTS)
 
 ### Model Specifications:
 - **Algorithm**: XGBoost Regressor (Winner) / Random Forest (Optimized Runner-up)
