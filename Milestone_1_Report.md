@@ -99,23 +99,26 @@ All datasets loaded directly via compressed CSV files for comprehensive market c
 ## Key Visualizations
 
 ### Price Distribution
-Highly right-skewed distribution with extreme luxury segment (see Appendix Figure 1):
+Highly right-skewed distribution with extreme luxury segment (see Appendix Figure 1 / Notebook Cell 29):
 - **Peak**: Around $111 median mainstream market
 - **Long Tail**: Luxury properties extending to $50,000+
 - **Clear Segments**: Budget, mid-market, luxury, and ultra-luxury tiers
+- **Visual Reference**: Notebook Cell 29 displays histogram with median $110, mean $169.78
 
 ### Capacity Patterns
-Guest accommodation analysis (see Appendix Figure 2) reveals:
+Guest accommodation analysis (see Appendix Figure 2 / Notebook Cells 26-31) reveals:
 - **4-Person Properties**: Most common capacity (families/small groups)
 - **2-4 Person Range**: Dominant market segment
 - **Higher Capacity (5+)**: Significant market presence with average of 5.1 guests
 - **Large Groups (8+)**: Present but less dominant than anticipated
+- **Visual References**: Notebook Cells 26-28 (room type), 29 (bedroom distribution), 30-31 (capacity analysis)
 
 ### Market Relationships
-Correlation analysis and scatter plots (see Appendix Figures 3-5):
+Correlation analysis and scatter plots (see Appendix Figures 3-5 / Notebook Cells 21-24):
 - **Price vs. Capacity**: Strong positive correlation with linear trend
-- **Property Types**: Entire homes dominate, private rooms serve budget segment (see Appendix Figure 6)
-- **Geographic**: Premium locations command significant price premiums (see Appendix Figure 7)
+- **Property Types**: Entire homes dominate, private rooms serve budget segment (see Appendix Figure 6 / Notebook Cell 28)
+- **Geographic**: Premium locations command significant price premiums (see Appendix Figure 7 / Notebook Cell 20)
+- **Visual References**: Cells 21-23 (correlation matrices), Cell 24 (price-focused correlations)
 
 ## Data Quality
 **Completeness**: Listings price (100% after conversion), Calendar price (100% after imputation), Property characteristics (high completeness), Location (100%), Reviews (99%+)
@@ -299,6 +302,7 @@ We evaluated four machine learning algorithms through systematic comparison:
 - Robust handling of complex feature interactions
 - Excellent balance between bias and variance
 - Provides interpretable feature importance with regularization
+- **Visual Reference**: See Appendix Figure 8 / Notebook Cell 43 for model comparison charts
 
 **Feature Engineering**:
 - Selected 21 features across property, host, and review dimensions
@@ -316,19 +320,21 @@ We evaluated four machine learning algorithms through systematic comparison:
 
 ### Performance Analysis
 
-**Quantitative Metrics**:
+**Quantitative Metrics** (see Appendix Figure 11 / Notebook Cell 47):
 - **Test R² Score**: 0.5842 (explains 58.4% of price variance)
 - **Test RMSE**: $97.08 (root mean squared error)
 - **Test MAE**: $53.44 (mean absolute error)
 - **Prediction Accuracy**: 67.9% within $50, 85.6% within $100
+- **Visual Reference**: Cell 47 displays prediction accuracy analysis with confidence bands
 
 **Model Diagnostics**:
 - Residuals normally distributed around zero (unbiased predictions)
 - Homoscedastic variance (consistent across price ranges)
-- Strong correlation between predicted and actual prices (see Appendix Figure 9)
+- Strong correlation between predicted and actual prices (see Appendix Figure 9 / Notebook Cell 45)
 - Minimal train-test performance gap (good generalization)
+- **Visual References**: Cell 45 (Prediction vs Actual), Cell 48 (Residual Analysis)
 
-**Feature Importance Rankings**:
+**Feature Importance Rankings** (see Appendix Figure 10 / Notebook Cell 46):
 Top 5 price drivers identified (from optimized Random Forest for interpretability):
 1. **bathrooms**: 44.5% importance - Property quality and capacity indicator
 2. **availability_365**: 7.3% importance - Year-round availability signals professional hosting
@@ -337,6 +343,8 @@ Top 5 price drivers identified (from optimized Random Forest for interpretabilit
 5. **reviews_per_month**: 4.0% importance - Booking consistency and popularity
 
 Key insight: Property characteristics (bathrooms, capacity) dominate with 57% combined importance, while host professionalization metrics (15% combined) and review consistency (4%) also significantly impact pricing power.
+
+**Visual Reference**: Notebook Cell 46 displays horizontal bar chart of Top 15 Feature Importances
 
 **Comparison to Baseline**:
 - Improved R² by 27% over linear regression baseline (0.4602 → 0.5842)
@@ -545,33 +553,6 @@ All data analysis, modeling decisions, feature engineering, hyperparameter selec
 
 **Verification**: All code and analysis reproducible from provided Jupyter notebook.
 
-### Group Contributions
-
-**[Team Member 1 Name]**: 
-- Data collection and preprocessing
-- Missing value analysis and imputation strategy
-- EDA visualizations and correlation analysis
-- Report: Data preprocessing and analysis results sections
-
-**[Team Member 2 Name]**:
-- Machine learning model development
-- Hyperparameter tuning and optimization
-- Feature importance analysis
-- Report: Model description and performance sections
-
-**[Team Member 3 Name]**:
-- Business analysis and stakeholder recommendations
-- ROI calculations and value quantification
-- Presentation development
-- Report: Business insights and implications sections
-
-**[Team Member 4 Name]** (if applicable):
-- Code review and validation
-- Documentation and GitHub management
-- Quality assurance and testing
-- Report: Conclusions and future work sections
-
-*All team members contributed to project planning, weekly discussions, and final review.*
 
 ### References
 
@@ -593,3 +574,199 @@ All data analysis, modeling decisions, feature engineering, hyperparameter selec
 **Notebook**: `Final_Project_661.ipynb`  
 **Report**: `Milestone_1_Report.md`  
 **Presentation**: `Final_Presentation.md`
+
+---
+
+## APPENDIX: Figures & Visualizations Reference Guide
+
+### How to Use This Appendix
+Each figure listed below references the specific cell number in the Jupyter notebook (`Final_Project_661.ipynb`) where the visualization can be found. All figures are generated from executed code cells and display actual data from the September 2025 Inside Airbnb dataset.
+
+**Citation Format**: "(see Figure X)" or "(see Figure X / Notebook Cell Y)"
+
+---
+
+### Part 1: Exploratory Data Analysis (EDA) Figures
+
+**Figure 1: Price Distribution Analysis**
+- **Notebook Cell**: 29
+- **Chart Type**: Histogram with statistical annotations
+- **Description**: Right-skewed price distribution showing median $110, mean $169.78, range $15-$1,700 (99th percentile filtered)
+- **Key Insight**: Clear market segmentation from budget to luxury properties
+- **Referenced In**: Introduction, Analysis Results (Price Analysis section)
+
+**Figure 2: Capacity & Property Characteristics**
+- **Notebook Cells**: 26-31
+  - Cell 26: Property type breakdown
+  - Cell 27: Room type distribution (pie chart)
+  - Cell 28: Room type market analysis
+  - Cell 29: Bedroom distribution (bar chart)
+  - Cell 30: Price vs capacity scatter plot
+  - Cell 31: Multi-property analysis
+- **Description**: Comprehensive property characteristic analysis
+- **Key Insight**: 4-guest properties dominate; entire homes 84.7% market share
+- **Referenced In**: Analysis Results (Capacity Patterns section)
+
+**Figure 3: Listings Correlation Matrix**
+- **Notebook Cell**: 21
+- **Chart Type**: Heatmap with correlation coefficients
+- **Description**: Correlation analysis of numerical variables in listings dataset
+- **Key Insight**: Host professionalization metrics (total listings count) show strongest correlation with price (r=0.364)
+- **Referenced In**: Analysis Results (Correlation Analysis section)
+
+**Figure 4: Calendar Variables Correlation**
+- **Notebook Cell**: 22
+- **Chart Type**: Heatmap
+- **Description**: Temporal patterns and availability correlations
+- **Referenced In**: Data Quality section
+
+**Figure 5: Price-Focused Correlation Analysis**
+- **Notebook Cell**: 23-24
+- **Chart Type**: Focused correlation matrix and scatter plots
+- **Description**: Detailed analysis of factors affecting pricing
+- **Key Insight**: Price vs capacity shows strong positive correlation
+- **Referenced In**: Analysis Results (Market Relationships section)
+
+**Figure 6: Room Type Market Distribution**
+- **Notebook Cell**: 28
+- **Chart Type**: Pie chart with percentages
+- **Description**: Market share breakdown: Entire home (84.7%), Private room (12.7%), Hotel room (2.5%), Shared room (0.1%)
+- **Referenced In**: Analysis Results (Market Composition section)
+
+**Figure 7: Geographic & Neighborhood Analysis**
+- **Notebook Cell**: 20
+- **Chart Type**: Categorical analysis and statistics
+- **Description**: Neighborhood-level pricing patterns and geographic distribution
+- **Key Insight**: Premium locations command significant price premiums
+- **Referenced In**: Analysis Results (Market Relationships section)
+
+---
+
+### Part 2: Machine Learning Model Figures
+
+**Figure 8: Model Comparison Charts**
+- **Notebook Cell**: 43
+- **Chart Type**: Three-panel bar chart (R², RMSE, MAE)
+- **Description**: Performance comparison of 4 algorithms (Linear Regression, Random Forest, Gradient Boosting, XGBoost)
+- **Key Metrics**:
+  - Linear Regression: R²=0.4602, RMSE=$110.61, MAE=$66.46
+  - Random Forest: R²=0.5709, RMSE=$98.61, MAE=$53.31
+  - Gradient Boosting: R²=0.5681, RMSE=$98.94, MAE=$54.59
+  - **XGBoost (Winner)**: R²=0.5842, RMSE=$97.08, MAE=$53.44
+  - Optimized RF: R²=0.5787, RMSE=$97.71, MAE=$52.58
+- **Referenced In**: MS2 Model Description, Performance Analysis sections
+
+**Figure 9: Prediction vs Actual Scatter Plots**
+- **Notebook Cell**: 45
+- **Chart Type**: Dual scatter plot (training and test sets)
+- **Description**: Predicted prices vs actual prices with perfect prediction reference line
+- **Key Insight**: Strong linear correlation, points cluster near perfect prediction line, minimal bias
+- **Referenced In**: MS2 Performance Analysis (Model Diagnostics)
+
+**Figure 10: Feature Importance Analysis**
+- **Notebook Cell**: 46
+- **Chart Type**: Horizontal bar chart (Top 15 features)
+- **Description**: Random Forest feature importance scores showing relative impact on predictions
+- **Top 5 Features**:
+  1. bathrooms: 44.5%
+  2. availability_365: 7.3%
+  3. host_total_listings_count: 5.8%
+  4. accommodates: 4.9%
+  5. reviews_per_month: 4.0%
+- **Referenced In**: MS2 Performance Analysis (Feature Importance Rankings), Stakeholder Implications
+
+**Figure 11: Prediction Accuracy Bands**
+- **Notebook Cell**: 47
+- **Chart Type**: Statistical analysis with confidence intervals
+- **Description**: Prediction accuracy thresholds showing model reliability
+- **Key Metrics**:
+  - 44.2% predictions within ±$20
+  - 67.9% predictions within ±$50
+  - 85.6% predictions within ±$100
+- **Referenced In**: MS2 Performance Analysis (Quantitative Metrics), Business Value sections
+
+**Figure 12: Residual Analysis**
+- **Notebook Cell**: 48
+- **Chart Type**: Dual plot (scatter + histogram)
+- **Description**: Residual scatter plot and distribution histogram
+- **Key Insight**: Random scatter around zero, normal distribution, mean residual ≈ $0 (unbiased predictions)
+- **Referenced In**: MS2 Performance Analysis (Model Diagnostics)
+
+**Figure 13: Stakeholder ROI Calculations**
+- **Notebook Cell**: 50
+- **Chart Type**: Business analysis with quantified impacts
+- **Description**: Revenue optimization calculations and stakeholder-specific recommendations
+- **Key Metrics**:
+  - Per-host: $4,850/year potential revenue increase
+  - Market-wide: $35.7M annual optimization potential
+  - Platform fees: $5.4M additional transaction revenue
+- **Referenced In**: MS2 Business Value Quantification, Stakeholder Implications
+
+---
+
+### Part 3: Additional Supporting Visualizations
+
+**Data Processing & Quality**
+- **Cells 3-10**: Dataset loading and initial inspection (shapes, dtypes, samples)
+- **Cell 13**: Distribution-aware imputation methodology with skewness analysis
+- **Cell 19**: Comprehensive data profiling and missing value patterns
+
+**Advanced Analysis**
+- **Cells 32-33**: Geographic patterns and neighborhood insights
+- **Cell 37**: Feature selection process (21 features identified)
+- **Cell 38**: Train/test split details (5,896 / 1,474 samples)
+- **Cells 39-42**: Individual model training outputs with metrics
+- **Cell 44**: Hyperparameter tuning with GridSearchCV results
+
+---
+
+### Quick Reference Table
+
+| Figure # | Cell # | Topic | Chart Type | Key Finding |
+|----------|--------|-------|------------|-------------|
+| 1 | 29 | Price Distribution | Histogram | Median $110, right-skewed |
+| 2 | 26-31 | Property Characteristics | Multiple | 4-guest properties dominate |
+| 3 | 21 | Listings Correlation | Heatmap | Host professionalization key |
+| 4 | 22 | Calendar Correlation | Heatmap | Temporal patterns identified |
+| 5 | 23-24 | Price Correlations | Scatter/Matrix | Capacity shows strong correlation |
+| 6 | 28 | Room Type Distribution | Pie Chart | 84.7% entire homes |
+| 7 | 20 | Geographic Analysis | Statistics | Neighborhood premiums exist |
+| 8 | 43 | Model Comparison | Bar Chart | XGBoost R²=0.5842 wins |
+| 9 | 45 | Prediction vs Actual | Scatter | Strong linear correlation |
+| 10 | 46 | Feature Importance | Bar Chart | Bathrooms 44.5% importance |
+| 11 | 47 | Accuracy Bands | Analysis | 85.6% within $100 |
+| 12 | 48 | Residual Analysis | Scatter/Hist | Unbiased predictions |
+| 13 | 50 | ROI Calculations | Business | $35.7M market potential |
+
+---
+
+### Accessing the Figures
+
+**In Jupyter Notebook**:
+1. Open `Final_Project_661.ipynb`
+2. Navigate to the specified cell number
+3. Execute the cell to generate the visualization
+4. All cells contain markdown headers for easy navigation
+
+**File Location**: `c:\Users\Owner\Documents\GitHub\AI-Applications-Project\Final_Project_661.ipynb`
+
+**Note**: All visualizations were generated using Python libraries: matplotlib, seaborn, pandas, numpy. Charts display actual data from the September 2025 Inside Airbnb dataset for New Orleans.
+
+---
+
+### Figure Citation Examples
+
+For academic or professional citations:
+
+**In-text citation**: 
+"The price distribution shows significant right-skew with luxury properties extending to $1,700 per night (Figure 1 / Notebook Cell 29)."
+
+**Full citation**:
+Figure 1. Price Distribution Analysis. Generated from Final_Project_661.ipynb, Cell 29. New Orleans Airbnb Market Analysis, Inside Airbnb Data (September 2025).
+
+**Presentation reference**:
+"As shown in Cell 29 of our analysis notebook, the median nightly price is $110 with a mean of $169.78..."
+
+---
+
+*End of Appendix*
