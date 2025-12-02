@@ -47,6 +47,43 @@
 
 ---
 
+## Slide 2.5: Why New Orleans? (1 minute)
+
+**Visual**: Map of New Orleans with tourism statistics and cultural highlights
+
+### Market Selection Rationale:
+
+**Tourism & Destination Appeal:**
+- Popular tourist destination with unique cultural draw
+- **2nd best travel destination in the US** (Travel+Leisure)
+- Rich cultural heritage (music, food, history) drives consistent year-round demand
+- Diverse event calendar creates pricing complexity ideal for ML modeling
+
+**Major Events & Seasonal Dynamics:**
+- **Mardi Gras demonstrates a popular travel season**, which will show interesting numbers
+  - **In 2025, approximately 1 million people stayed between February 28th and March 5**
+  - **Average hotel occupancy during this time was 87%** (Biz New Orleans)
+- Jazz & Heritage Festival (April-May): 400,000+ attendees
+- Sugar Bowl (January): 70,000+ visitors
+- French Quarter Festival, Essence Festival, Voodoo Fest
+
+**Airbnb Market Characteristics:**
+- 7,400+ active listings create robust dataset
+- High price variability ($15-$1,700) offers modeling challenge
+- Mix of property types: French Quarter studios to Garden District mansions
+- Strong short-term rental ecosystem with regulatory clarity
+
+**Data Science Benefits:**
+- Rich seasonal patterns for temporal modeling
+- Event-driven pricing fluctuations
+- Diverse property types across distinct neighborhoods
+- Large volume of reviews for sentiment analysis potential
+
+### Speaking Script:
+"Why New Orleans? Beyond being Travel+Leisure's second-best US destination, New Orleans offers an ideal laboratory for Airbnb price prediction. The city's event calendar creates dramatic pricing dynamics—during Mardi Gras 2025, one million visitors pushed hotel occupancy to 87%, creating massive demand for alternative accommodations. With 7,400+ Airbnb listings ranging from $15 budget rooms to $1,700 luxury properties, combined with year-round festivals like Jazz Fest and major sporting events, New Orleans provides the price complexity and seasonal variation that makes machine learning particularly valuable. This market is perfect for demonstrating how data science can tackle real-world pricing challenges in dynamic hospitality environments."
+
+---
+
 ## Slide 3: Data & Methodology (1.5 minutes)
 
 **Visual**: Data pipeline flowchart with dataset statistics
